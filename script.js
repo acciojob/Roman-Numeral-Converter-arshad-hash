@@ -1,20 +1,39 @@
 function convertToRoman(num) {
-  	const obj = {
-      0:['M',1000], 
-      1:['D', 500], 
-      2:['C', 100], 
-      3:['L', 50], 
-      4:['X', 10], 
-      5:['V', 5], 
-      6:['I', 1]
-    };
+  const obj = {
+    0: ['M', 1000],
+    1: ['D', 500],
+    2: ['C', 100],
+    3: ['L', 50],
+    4: ['X', 10],
+    5: ['V', 5],
+    6: ['IV', 4],
+    7: ['III', 3],
+    8: ['II', 2],
+    9: ['I', 1]
+  };
 
-  //your code here
+  let result = '';
 
+  for (let key in obj) {
+    // Access the values using obj[key]
+    let [roman, value] = obj[key];
+
+    // Calculate the number of times the current value goes into num
+    let count = Math.floor(num / value);
+
+    // Append the Roman numeral to the result
+    result += roman.repeat(count);
+
+    // Update num by subtracting the value * count
+    num -= value * count;
+  }
+
+  return result;
 }
-// You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
 
-// console.log(convertToRoman(36));
+// Test the function with an example (e.g., 36)
+console.log(convertToRoman(36));
+
 
 
 
